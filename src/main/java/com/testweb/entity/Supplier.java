@@ -1,10 +1,13 @@
 package com.testweb.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,12 @@ public class Supplier {
 
     @Column(length = 200, nullable = false)
     private String no_tlpn;
+
+    @Column(length = 200, nullable = false)
+    private String email;
+
+    @ManyToMany(mappedBy = "suppliers")
+    private Set<Product> products;
 
     public Supplier() {
     }
@@ -46,6 +55,22 @@ public class Supplier {
 
     public void setNo_tlpn(String no_tlpn) {
         this.no_tlpn = no_tlpn;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
 }

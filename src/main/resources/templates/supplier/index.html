@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title>Demo</title>
+</head>
+<body>
+  <div th:replace="layouts/navbar::navbar"></div>
+      <div class="container mt-2">
+        <a class="btn btn-primary" th:href="@{/supplier/add}">Add New Supplier</a>
+          <!-- <h1 th:text="${msg}"></h1> -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>No Telpn</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- looping = foreach php -->
+              <tr th:each="supplier : ${suppliers}">
+                <td th:text="${supplier.id}"></td>
+                <td th:text="${supplier.name}"></td>
+                <td th:text="${supplier.no_tlpn}"></td>
+                <td th:text="${supplier.email}"></td>
+                <td>
+                  <a th:href="@{'/supplier/edit/'+${supplier.id}}" class="btn btn-warning">Update</a>
+                  <a th:href="@{'/supplier/delete/'+${supplier.id}}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

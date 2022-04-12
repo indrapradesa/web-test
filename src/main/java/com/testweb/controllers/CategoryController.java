@@ -1,5 +1,6 @@
 package com.testweb.controllers;
 
+import com.testweb.dto.SearchFormData;
 import com.testweb.entity.Category;
 import com.testweb.service.CategoryService;
 
@@ -19,46 +20,48 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping
-    public String welcome(Model model) {
+    public String category(Model model) {
 
-        String messages = "Welcome Home Bestie";
-        model.addAttribute("msg", messages);
-        // model.addAttribute("searchForm", new SearchFormData());
+        // String messages = "Welcome Home Bestie";
+        // model.addAttribute("msg", messages);
+        model.addAttribute("searchForm", new SearchFormData());
         model.addAttribute("categories", categoryService.findAll());
 
-        return "index";
+        return "category/index";
     }
 
     @GetMapping("/add")
     public String add(Model model) {
+        model.addAttribute("searchForm", new SearchFormData());
         model.addAttribute("category", new Category());
-        return "add";
+        return "category/add";
     }
 
     @PostMapping(value = "/save")
     public String save(Category category) {
         categoryService.addCategory(category);
 
-        return "redirect:/";
+        return "redirect:/category";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         categoryService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/category";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("product", categoryService.findById(id));
-        return "edit";
+        model.addAttribute("searchForm", new SearchFormData());
+        model.addAttribute("category", categoryService.findById(id));
+        return "category/update";
     }
 
     @PostMapping(value = "/update")
     public String update(Category category) {
         categoryService.updateCategory(category);
 
-        return "redirect:/";
+        return "redirect:/category";
     }
 
 }

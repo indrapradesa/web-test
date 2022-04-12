@@ -10,8 +10,8 @@
 <body>
   <div th:replace="layouts/navbar::navbar"></div>
       <div class="container mt-2">
-          <h3>Edit Product</h3>
-          <form th:object="${product}" th:action="@{/update}" method="post">
+          <h3>Add New Product</h3>
+          <form th:object="${product}" th:action="@{/product/save}" method="post">
             <div class="form-grup">
                   <label for="name">Name</label>
                   <input type="text" class="form-control" th:field="*{name}">
@@ -22,12 +22,11 @@
             </div>
             <div class="form-grup">
                 <label for="price">Price</label>
-                <input type="number" class="form-control" th:field="*{price}">
+                <input type="number" class="form-control" min="0" th:field="*{price}">
             </div>
             <br/>
-            <input type="hidden" th:field="*{id}">
             <p>
-                <button class="btn btn-primary" type="submit">Update</button>
+                <button class="btn btn-primary" type="submit">Add</button>
             </p>
           </form>
     </div>

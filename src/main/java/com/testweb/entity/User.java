@@ -8,21 +8,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_supplier")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 150, nullable = false)
+    @Column(nullable = false, unique = true, length = 45)
     private String name;
 
-    @Column(length = 16, nullable = false)
-    private String password;
+    @Column(nullable = false, length = 64)
+    private String address;
 
-    public User() {
-    }
+    @Column(nullable = false, length = 64)
+    private String no_tlpn;
 
     public Long getId() {
         return id;
@@ -40,12 +40,20 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNo_tlpn() {
+        return no_tlpn;
+    }
+
+    public void setNo_tlpn(String no_tlpn) {
+        this.no_tlpn = no_tlpn;
     }
 
 }
