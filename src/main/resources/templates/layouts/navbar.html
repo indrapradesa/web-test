@@ -19,9 +19,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" th:href="@{/supplier}">Supplier</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link active" aria-current="page" th:href="@{/user}">User</a>
-              </li>
+              </li> -->
             </ul>
             <form class="d-flex" th:object="${searchForm}" method="post" th:action="@{/search}">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:field="*{keyword}">
