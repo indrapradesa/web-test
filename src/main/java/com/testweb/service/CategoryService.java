@@ -21,7 +21,7 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
-    public void addProduct(Category category) {
+    public void addCategory(Category category) {
         categoryRepo.save(category);
     }
 
@@ -33,7 +33,7 @@ public class CategoryService {
         return categoryRepo.findById(id);
     }
 
-    public void updateProduct(Category category) {
+    public void updateCategory(Category category) {
         categoryRepo.save(category);
     }
 
